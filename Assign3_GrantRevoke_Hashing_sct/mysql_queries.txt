@@ -1,0 +1,25 @@
+-- 1. Create the database
+CREATE DATABASE assig03a;
+
+-- 2. Select the database to work in
+USE assig03a;
+
+-- 3. Create the table with the specified columns (password is a keyword, that is why I put 'password_h')
+CREATE TABLE  regist_with_hash (
+    id 			   INT AUTO_INCREMENT PRIMARY KEY,
+    username       VARCHAR(50),
+    password_h     VARCHAR(300),
+    mobileNumber   VARCHAR(20),
+    emailId        VARCHAR(50)
+);
+
+-- 4. Create the user
+create user 'comp3026_w2026_sct'@'localhost' identified by 'class123';
+
+-- 5. Grant the users the access
+grant SELECT, INSERT on assig03a.regist_with_hash to 'comp3026_w2026_sct'@'localhost';
+
+flush privileges;
+
+-- 6. Check the access of the user
+SHOW GRANTS FOR 'comp3026_w2026_sct'@'localhost';
